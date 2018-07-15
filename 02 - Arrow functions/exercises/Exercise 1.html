@@ -42,8 +42,8 @@
 
   // map to an array of seconds
   const flexboxVidSecs = flexboxVidTimes.map((vidTime) => {
-    const [ mins, secs] = vidTime.split(':');
-    return (parseInt(mins, 10) * 60) + parseInt(secs, 10);
+    const [ mins, secs] = vidTime.split(':').map(part => parseFloat(part));
+    return ((mins * 60) + secs);
   })
 
   // reduce to get total
