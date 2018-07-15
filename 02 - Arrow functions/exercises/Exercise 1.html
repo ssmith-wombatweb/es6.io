@@ -32,14 +32,28 @@
 <script>
 
   // Select all the list items on the page and convert to array
+  const vidElms = [...document.getElementsByTagName('li')];
 
   // Filter for only the elements that contain the word 'flexbox'
+  const flexboxVidElms = vidElms.filter((vidElm) => {
+    return vidElm.innerText.includes('Flexbox');
+  })
 
   // map down to a list of time strings
+  const flexboxVidTimes = flexboxVidElms.map((vidElm) => {
+    return vidElm.dataset.time;
+  })
 
   // map to an array of seconds
+  const flexboxVidSecs = flexboxVidTimes.map((vidTime) => {
+    const [ mins, secs] = vidTime.split(':');
+    return (parseInt(mins, 10) * 60) + parseInt(secs, 10);
+  })
 
   // reduce to get total
+  const flexboxVidsTotal = flexboxVidSecs.reduce((total, vidTime) => total + vidTime, 0);
+  
+  console.log(flexboxVidsTotal);
 
   // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
