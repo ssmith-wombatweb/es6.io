@@ -30,6 +30,12 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
+  const spreads = document.querySelectorAll('.jump')[0];
+  const spreadsText = spreads.textContent;
+
+  const newSpreadsText = [...spreadsText].map(char => `<span>${char}</span>`)
+
+  spreads.innerHTML = newSpreadsText.join('');
   
 </script>
 </body>
